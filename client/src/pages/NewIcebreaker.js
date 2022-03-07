@@ -4,9 +4,9 @@ import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
 
-function NewPhrase({ user }) {
+function NewIcebreaker({ user }) {
   const [content, setContent] = useState("");
-  const [phraseUser, setPhraseUser] = useState("");
+  const [phraseUser, setIcebreakerUser] = useState("");
   const [instructions, setInstructions] = useState("")
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -54,7 +54,7 @@ function NewPhrase({ user }) {
               type="string"
               id="phraseUser"
               value={phraseUser}
-              onChange={(e) => setPhraseUser(e.target.value)}
+              onChange={(e) => setIcebreakerUser(e.target.value)}
             />
           </FormField>
           <FormField>
@@ -68,7 +68,7 @@ function NewPhrase({ user }) {
           </FormField>
           <FormField>
             <Button color="primary" type="submit">
-              {isLoading ? "Loading..." : "Submit Recipe"}
+              {isLoading ? "Loading..." : "Submit icebreaker"}
             </Button>
           </FormField>
           <FormField>
@@ -102,4 +102,4 @@ const WrapperChild = styled.div`
   flex: 1;
 `;
 
-export default NewPhrase;
+export default NewIcebreaker;

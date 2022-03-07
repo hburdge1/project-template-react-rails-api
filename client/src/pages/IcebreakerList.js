@@ -6,25 +6,25 @@ import { Box, Button } from "../styles";
 import NewIcebreaker from "./NewIcebreaker"
 
 function IcebreakerList() {
-  const [phrases, setPhrases] = useState([]);
+  const [icebreakers, setIcebreakers] = useState([]);
 
   useEffect(() => {
     fetch("/outlinelist")
       .then((r) => r.json())
-      .then(setPhrases);
+      .then(setIcebreakers);
   }, []);
 
   return (
     <Wrapper>
-      {phrases.length > 0 ? (
-        phrases.map((phrase) => (
-          <NewIcebreaker key={phrase.id}>
+      {icebreakers.length > 0 ? (
+        icebreakers.map((icebreaker) => (
+          <NewIcebreaker key={icebreaker.id}>
             <Box>
              
               <p>
-                <em>{phrase.filled_portions}</em>
+                <em>{icebreaker.filled_portions}</em>
                 &nbsp;·&nbsp;
-                <cite>By {phrase.user.username}</cite>
+                <cite>By {icebreaker.user.username}</cite>
               </p>
               <ReactMarkdown></ReactMarkdown>
             </Box>
