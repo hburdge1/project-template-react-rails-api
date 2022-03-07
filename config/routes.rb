@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :outline_lists
   resources :phrases
   resources :users, only: [:new, :create, :update, :show, :destroy]
     post "/signup", to: "users#create"

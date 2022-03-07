@@ -1,5 +1,5 @@
 class PhrasesController < ApplicationController
-     def index
+  def index
     render json: Recipe.all
   end
 

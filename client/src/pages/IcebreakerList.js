@@ -4,30 +4,30 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
 
-function RecipeList() {
-  const [phrases, setRecipes] = useState([]);
+function IcebreakerList() {
+  const [phrases, setPhrases] = useState([]);
 
   useEffect(() => {
-    fetch("/phrases")
+    fetch("/outlinelist")
       .then((r) => r.json())
-      .then(setRecipes);
+      .then(setPhrases);
   }, []);
 
   return (
     <Wrapper>
       {phrases.length > 0 ? (
         phrases.map((phrase) => (
-          <Recipe key={phrase.id}>
+          <NewIcebreaker key={phrase.id}>
             <Box>
              
               <p>
-                <em>Time to Complete: {phrase.content} minutes</em>
+                <em>{phrase.filled_portions}</em>
                 &nbsp;·&nbsp;
                 <cite>By {phrase.user.username}</cite>
               </p>
-              <ReactMarkdown>{phrase.instructions}</ReactMarkdown>
+              <ReactMarkdown></ReactMarkdown>
             </Box>
-          </Recipe>
+          </NewIcebreaker>
         ))
       ) : (
         <>
@@ -50,4 +50,4 @@ const Recipe = styled.article`
   margin-bottom: 24px;
 `;
 
-export default RecipeList;
+export default IcebreakerList;
