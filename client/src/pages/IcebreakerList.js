@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
+import NewIcebreaker from "./NewIcebreaker"
 
 function IcebreakerList() {
   const [phrases, setPhrases] = useState([]);

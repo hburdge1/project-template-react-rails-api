@@ -5,19 +5,9 @@ import ReactMarkdown from "react-markdown";
 import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
 
 function NewPhrase({ user }) {
-  const [content, setContent] = useState("This is a phrase");
-  const [phraseUser, setPhraseUser] = useState("What happens in the dark always comes to light");
-  const [instructions, setInstructions] = useState(`Here's how you make it.
-  
-## Ingredients
-
-- 1c Sugar
-- 1c Spice
-
-## Instructions
-
-**Mix** sugar and spice. _Bake_ for 30 minutes.
-  `);
+  const [content, setContent] = useState("");
+  const [phraseUser, setPhraseUser] = useState("");
+  const [instructions, setInstructions] = useState("")
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();

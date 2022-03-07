@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :responses
+  resources :icebreakers
+  resources :work_groups
   resources :outline_lists
   resources :phrases
   resources :users, only: [:new, :create, :update, :show, :destroy]

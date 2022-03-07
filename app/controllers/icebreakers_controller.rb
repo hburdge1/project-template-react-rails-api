@@ -1,0 +1,2 @@
+class IcebreakersController < ApplicationController
+end
