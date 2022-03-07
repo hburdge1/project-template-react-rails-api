@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   resources :responses
   resources :icebreakers
   resources :work_groups
-  resources :outline_lists
-  resources :phrases
-  resources :users, only: [:new, :create, :update, :show, :destroy]
+  resources :users
     post "/signup", to: "users#create"
     get "/me", to: "users#show"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
+
+    post "/icebreakers", to: "icebreaker#show"
  
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

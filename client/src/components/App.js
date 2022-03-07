@@ -27,7 +27,7 @@ function App() {
           <Route path="/new">
             <NewIcebreaker user={user} />
           </Route>
-          <Route path="/">
+          <Route path="/icebreakers">
             <IcebreakerList />
           </Route>
         </Switch>
