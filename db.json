@@ -1,0 +1,64 @@
+{
+  "icebreakers": [
+    {
+      "id": 1,
+      "content": "Aloe",
+      "category": "./images/aloe.jpg",
+      "flames": 1500
+    },
+    {
+      "id": 2,
+      "conteent": "ZZ Plant",
+      "category": "./images/zz-plant.jpg",
+      "flames": 25.98
+    },
+    {
+      "id": 3,
+      "conteent": "Pilea peperomioides",
+      "category": "./images/pilea.jpg",
+      "flames": 5.99
+    },
+    {
+      "id": 4,
+      "conteent": "Pothos",
+      "category": "./images/pothos.jpg",
+      "flames": 12.11
+    },
+    {
+      "id": 5,
+      "conteent": "Jade",
+      "category": "./images/jade.jpg",
+      "flames": 10.37
+    },
+    {
+      "id": 6,
+      "conteent": "Monstera Deliciosa",
+      "category": "./images/monstera.jpg",
+      "flames": 25.99
+    },
+    {
+      "id": 7,
+      "conteent": "Fiddle Leaf Fig",
+      "category": "./images/fiddle-leaf-fig.jpg",
+      "flames": 55
+    },
+    {
+      "conteent": "dd",
+      "category": "https://picsum.photos/200",
+      "flames": "11.50",
+      "id": 8
+    },
+    {
+      "conteent": "Death",
+      "category": "https://www.homestratosphere.com/wp-content/uploads/2020/10/types-of-carnivorous-plants-Oct282020-1-min.jpg",
+      "flames": "25.00",
+      "id": 9
+    },
+    {
+      "conteent": "Love Plant",
+      "category": "https://picsum.photos/200",
+      "flames": "9.99",
+      "id": 10
+    }
+  ]
+}
