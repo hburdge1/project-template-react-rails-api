@@ -9,7 +9,7 @@ function IcebreakerList() {
   const [icebreakers, setIcebreakers] = useState([]);
 
   useEffect(() => {
-    fetch("/outlinelist")
+    fetch("/icebreakers")
       .then((r) => r.json())
       .then(setIcebreakers);
   }, []);

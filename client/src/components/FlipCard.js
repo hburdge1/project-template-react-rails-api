@@ -27,4 +27,4 @@ function FlipCard({ seeIceBreakers }) {
   );
 }
 
-export default FlipCard;
+export { FlipCard };

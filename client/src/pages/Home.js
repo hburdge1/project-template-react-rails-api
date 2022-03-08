@@ -1,5 +1,5 @@
-import React, { createRef } from "react";
-import { FlipCard } from "./FlipCard";
+import React, { useState, createRef } from "react";
+import { FlipCard } from "../components/FlipCard.js";
 function WelcomeCard({ seeIceBreakers }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
