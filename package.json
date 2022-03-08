@@ -4,7 +4,12 @@
   "engines": {
     "node": "16.x"
   },
+  "dependencies": {
+    "json-server": "^0.16.3"
+  },
   "scripts": {
+    "start": "react-scripts start",
+    "server": "json-server --watch db.json -p 6001",
     "build": "npm install --prefix client && npm run build --prefix client",
     "clean": "rm -rf public",
     "deploy": "cp -a client/build/. public/",
