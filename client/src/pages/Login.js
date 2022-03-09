@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import LoginForm from "../components/LoginForm";
-import SignUpForm from "../components/SignUpForm";
+import LoginForm from "../Components/LoginForm";
+import SignUpForm from "../Components/SignUpForm";
 import { Button } from "../styles";
 
 function Login({ onLogin }) {
@@ -9,7 +9,7 @@ function Login({ onLogin }) {
 
   return (
     <Wrapper>
-      <Logo>Reciplease</Logo>
+      <Logo>N-Tro</Logo>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />

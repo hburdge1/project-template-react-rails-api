@@ -4,30 +4,34 @@ import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
 
-function NewPhrase({ user }) {
+function NewPhrase({ user, addIcebreaker }) {
+  const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
-  const [phraseUser, setPhraseUser] = useState("");
-  const [instructions, setInstructions] = useState("")
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
+  const flames = null;
 
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/phrases", {
+    // const newIcebreaker = { ...content, ...category, flames: 0 };
+    fetch("http://localhost:6001/icebreakers", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         content,
-        phraseUser
+        category,
+        flames,
+        user,
       }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
         history.push("/");
+        addIcebreaker(r);
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -37,38 +41,38 @@ function NewPhrase({ user }) {
   return (
     <Wrapper>
       <WrapperChild>
-        <h2>Create Recipe</h2>
+        <h2>Create New Intro</h2>
+        <h4>
+          Choose between an Activity or a Question and give a detailed
+          description as to what should happen or be asked to the grpup.{" "}
+        </h4>
         <form onSubmit={handleSubmit}>
-          <FormField>
-            <Label htmlFor="content">Icebreaker</Label>
-            <Input
+          <div>
+            <label htmlFor="category">Category: </label>
+            <select
               type="text"
-              id="content"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option value="Activity">Activity</option>
+              <option value="Question">Question</option>
+            </select>
+          </div>
+          <FormField>
+            <Label htmlFor="postedBy">Description:</Label>
+            <Input
+              type="string"
+              id="phraseUser"
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
           </FormField>
-          <FormField>
-            <Label htmlFor="postedBy">Posted by:</Label>
-            <Input
-              type="string"
-              id="phraseUser"
-              value={phraseUser}
-              onChange={(e) => setPhraseUser(e.target.value)}
-            />
-          </FormField>
-          <FormField>
-            <Label htmlFor="instructions">Instructions</Label>
-            <Textarea
-              id="instructions"
-              rows="10"
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
-            />
-          </FormField>
+          <cite>
+            By {user.username} {Date().toLocaleString()}
+          </cite>
           <FormField>
             <Button color="primary" type="submit">
-              {isLoading ? "Loading..." : "Submit Recipe"}
+              {isLoading ? "Loading..." : "Submit Intro"}
             </Button>
           </FormField>
           <FormField>
@@ -78,14 +82,11 @@ function NewPhrase({ user }) {
           </FormField>
         </form>
       </WrapperChild>
-      <WrapperChild>
+      <div className="flip-card">
         <h1>{content}</h1>
-        <p>
-          &nbsp;·&nbsp;
-          <cite>By {user.username}</cite>
-        </p>
-        <ReactMarkdown>{instructions}</ReactMarkdown>
-      </WrapperChild>
+        <h3>{category}</h3>
+        {/* <ReactMarkdown>{instructions}</ReactMarkdown> */}
+      </div>
     </Wrapper>
   );
 }

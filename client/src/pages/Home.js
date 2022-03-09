@@ -1,14 +1,26 @@
-import React, { createRef } from "react";
-import { FlipCard } from "./FlipCard";
-function WelcomeCard({ seeIceBreakers }) {
+import React, { useState } from "react";
+import FlipCard from "../Components/FlipCard";
+
+function WelcomeCard({ seeIceBreakers, updateIcebreaker }) {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
-    <ul className="cards">
-      {seeIceBreakers.map((ice) => (
-        <FlipCard seeIceBreakers={seeIceBreakers} key={seeIceBreakers.id} />
-      ))}
-    </ul>
+    <>
+      <h2 className="title">Welcome</h2>
+      <div className="card-container">
+        {seeIceBreakers.map((ice) => (
+          <div className="card-item-container">
+            <FlipCard
+              content={ice.content}
+              category={ice.category}
+              flames={ice.flames}
+              key={ice.id}
+              updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
+            />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 

@@ -2,63 +2,172 @@
   "icebreakers": [
     {
       "id": 1,
-      "content": "Aloe",
-      "category": "./images/aloe.jpg",
-      "flames": 1500
+      "content": "What's your favorite ice cream flavor?",
+      "category": "Question",
+      "flames": 15
     },
     {
       "id": 2,
-      "conteent": "ZZ Plant",
-      "category": "./images/zz-plant.jpg",
-      "flames": 25.98
+      "content": "What's your favorite cartoon show?",
+      "category": "Question",
+      "flames": 25
     },
     {
       "id": 3,
-      "conteent": "Pilea peperomioides",
-      "category": "./images/pilea.jpg",
-      "flames": 5.99
+      "content": "What is your go-to location or favorite spot in the house?",
+      "category": "Question",
+      "flames": 5
     },
     {
       "id": 4,
-      "conteent": "Pothos",
-      "category": "./images/pothos.jpg",
-      "flames": 12.11
+      "content": "In groups of two's have each group give a list of things they have in common",
+      "category": "Activity",
+      "flames": 12
     },
     {
       "id": 5,
-      "conteent": "Jade",
-      "category": "./images/jade.jpg",
-      "flames": 10.37
+      "content": "Give everyone a random color, then go around the room and ask everyone to describe their color for participants to guess their color",
+      "category": "Activity",
+      "flames": 10
     },
     {
-      "id": 6,
-      "conteent": "Monstera Deliciosa",
-      "category": "./images/monstera.jpg",
-      "flames": 25.99
+      "content": "What animal would be the best pet to own but is illegal right now?",
+      "category": "Question",
+      "flames": null,
+      "user": {
+        "username": "was",
+        "password": "2345",
+        "id": 25
+      },
+      "id": 6
     },
     {
-      "id": 7,
-      "conteent": "Fiddle Leaf Fig",
-      "category": "./images/fiddle-leaf-fig.jpg",
-      "flames": 55
+      "content": "What is your favorite gem, stone or crystal?",
+      "category": "Question",
+      "flames": null,
+      "user": {
+        "username": "was",
+        "password": "2345",
+        "id": 25
+      },
+      "id": 7
+    }
+  ],
+  "users": [
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 6
     },
     {
-      "conteent": "dd",
-      "category": "https://picsum.photos/200",
-      "flames": "11.50",
+      "username": "was",
+      "password": "2345",
+      "id": 7
+    },
+    {
+      "username": "was",
+      "password": "2345",
       "id": 8
     },
     {
-      "conteent": "Death",
-      "category": "https://www.homestratosphere.com/wp-content/uploads/2020/10/types-of-carnivorous-plants-Oct282020-1-min.jpg",
-      "flames": "25.00",
+      "username": "was",
+      "password": "2345",
       "id": 9
     },
     {
-      "conteent": "Love Plant",
-      "category": "https://picsum.photos/200",
-      "flames": "9.99",
+      "username": "was",
+      "password": "2345",
       "id": 10
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 11
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 12
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 13
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 14
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 15
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 16
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 17
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 18
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 19
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 20
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 21
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 22
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 23
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 24
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 25
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 26
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 27
+    },
+    {
+      "username": "was",
+      "password": "2345",
+      "id": 28
     }
   ]
 }
