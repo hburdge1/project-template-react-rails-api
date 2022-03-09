@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
 import "../Components/FlipCard.css";
 
-function NewPhrase({ user, addIcebreaker }) {
+function NewIcebreaker({ user, addIcebreaker }) {
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState([]);
@@ -74,7 +74,7 @@ function NewPhrase({ user, addIcebreaker }) {
           </cite>
           <FormField>
             <Button color="primary" type="submit">
-              {isLoading ? "Loading..." : "Submit Intro"}
+              {isLoading ? "Loading..." : "Submit Icebreaker"}
             </Button>
           </FormField>
           <FormField>
@@ -105,4 +105,4 @@ const WrapperChild = styled.div`
   flex: 1;
 `;
 
-export default NewPhrase;
+export default NewIcebreaker;

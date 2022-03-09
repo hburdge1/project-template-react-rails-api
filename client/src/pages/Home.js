@@ -3,7 +3,7 @@ import FlipCard from "../Components/FlipCard";
 import { fetchAllIcebreakers } from "../api";
 
 function WelcomeCard({ user }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [seeIceBreakers, setIceBreakers] = useState([]);
 
   // get all icebreakers
