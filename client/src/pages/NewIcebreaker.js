@@ -4,9 +4,16 @@ import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
 
+<<<<<<< HEAD
 function NewPhrase({ user, addIcebreaker }) {
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
+=======
+function NewIcebreaker({ user }) {
+  const [content, setContent] = useState("");
+  const [phraseUser, setIcebreakerUser] = useState("");
+  const [instructions, setInstructions] = useState("")
+>>>>>>> main
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
@@ -63,8 +70,22 @@ function NewPhrase({ user, addIcebreaker }) {
             <Input
               type="string"
               id="phraseUser"
+<<<<<<< HEAD
               value={content}
               onChange={(e) => setContent(e.target.value)}
+=======
+              value={phraseUser}
+              onChange={(e) => setIcebreakerUser(e.target.value)}
+            />
+          </FormField>
+          <FormField>
+            <Label htmlFor="instructions">Instructions</Label>
+            <Textarea
+              id="instructions"
+              rows="10"
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+>>>>>>> main
             />
           </FormField>
           <cite>
@@ -72,7 +93,11 @@ function NewPhrase({ user, addIcebreaker }) {
           </cite>
           <FormField>
             <Button color="primary" type="submit">
+<<<<<<< HEAD
               {isLoading ? "Loading..." : "Submit Intro"}
+=======
+              {isLoading ? "Loading..." : "Submit icebreaker"}
+>>>>>>> main
             </Button>
           </FormField>
           <FormField>
@@ -103,4 +128,4 @@ const WrapperChild = styled.div`
   flex: 1;
 `;
 
-export default NewPhrase;
+export default NewIcebreaker;

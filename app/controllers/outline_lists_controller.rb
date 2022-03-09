@@ -1,2 +1,0 @@
-class OutlineListsController < ApplicationController
-end

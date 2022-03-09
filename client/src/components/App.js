@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
 import { fetchAllIcebreakers } from "../api";
+=======
+import { Switch, Route } from "react-router-dom";
+>>>>>>> main
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import IcebreakerList from "../pages/IcebreakerList";
@@ -82,8 +86,13 @@ function App() {
           <Route path="/signup">
             <Login onLogin={onAuth} />
           </Route>
+<<<<<<< HEAD
           <Route path="*">
             <Redirect to="/signup" />
+=======
+          <Route path="/icebreakers">
+            <IcebreakerList />
+>>>>>>> main
           </Route>
         </Switch>
       )}

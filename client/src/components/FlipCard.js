@@ -30,6 +30,7 @@ export default function FlipCard({
     </div>
   );
 }
+<<<<<<< HEAD
 // <div className="flip-card-inner" onClick={() => handleOnClick}>
 //   {!isFlipped ? (
 //     <div className="flip-card-front">
@@ -47,3 +48,7 @@ export default function FlipCard({
 //     </div>
 //   )}
 // </div>
+=======
+
+export { FlipCard };
+>>>>>>> main

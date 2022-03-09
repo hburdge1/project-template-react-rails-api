@@ -10,6 +10,10 @@ function SignUpForm({ onLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  function displayError(e){
+    e.preventDefault();
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
@@ -31,10 +35,10 @@ function SignUpForm({ onLogin }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
-  }
+   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(password.value === passwordConfirmation.value)? {handleSubmit} : {displayError}}>
       <FormField>
         <Label htmlFor="username">Username</Label>
         <Input

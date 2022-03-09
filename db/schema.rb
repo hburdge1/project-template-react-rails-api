@@ -19,17 +19,10 @@ ActiveRecord::Schema.define(version: 2022_03_07_163042) do
     t.bigint "user_id"
     t.string "content"
     t.boolean "filled"
+    t.string "tags"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_icebreakers_on_user_id"
-  end
-
-  create_table "phrases", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_phrases_on_user_id"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -63,5 +56,4 @@ ActiveRecord::Schema.define(version: 2022_03_07_163042) do
   end
 
   add_foreign_key "icebreakers", "users"
-  add_foreign_key "phrases", "users"
 end

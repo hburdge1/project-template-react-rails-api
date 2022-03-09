@@ -1,5 +1,13 @@
 # Project Template: React/Rails API
-
+#sources
+ https://museumhack.com/list-icebreakers-questions/
+ https://www.quizbreaker.com/ice-breaker-questions
+ https://www.signupgenius.com/groups/funny-icebreaker-questions.cfm
+ https://conversationstartersworld.com/icebreaker-questions/
+ https://conversationstartersworld.com/random-question-generator/
+ https://www.cozymeal.com/team-building-activities/ice-breaker-questions
+ https://www.indeed.com/career-advice/finding-a-job/icebreaker-questions-to-use-when-meeting-new-people
+ https://toggl.com/blog/icebreaker-questions
 ## Description
 
 This project is scaffolded so that you can build a React frontend and Rails

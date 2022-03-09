@@ -21,6 +21,9 @@ function NavBar({ user, setUser }) {
         <Button as={Link} to="/new">
           New Icebreaker
         </Button>
+        <Button as={Link} to="/icebreakers">
+          Show my icebreakers
+        </Button>
         <Button variant="outline" onClick={handleLogoutClick}>
           Logout
         </Button>
