@@ -1,35 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
-import { fetchAllIcebreakers } from "./Api";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
-import IcebreakerList from "../pages/IcebreakerList";
 import NewIcebreaker from "../pages/NewIcebreaker";
 import Home from "../pages/Home";
 import SignUpForm from "./SignUpForm";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [seeIceBreakers, setIceBreakers] = useState([]);
   const history = useHistory();
-  // get all icebreakers
-    useEffect(() => {
-    // auto-login
-    fetch("/icebreakers").then((r) => {
-      if (r.ok) {
-        r.json().then((res) => setIceBreakers(res));
-      }
-    });
-  }, []);
 
-  // add icebreakers
-  const addIcebreaker = (icebreaker) => {
-    setIceBreakers([...seeIceBreakers, icebreaker]);
-  };
   // handle auth
   const onAuth = (user) => {
-    setUser(user);
+    setUser(user.username, user.password, user.id);
     history.push("/");
   };
 
@@ -60,15 +44,13 @@ function App() {
       {user ? (
         <div>
           <NavBar user={user} setUser={setUser} />
-
           <main>
             <Switch>
+              <Route path="/new">
+                <NewIcebreaker user={user} />
+              </Route>
               <Route path="/">
-                <Home
-                  seeIceBreakers={seeIceBreakers}
-                  updateIcebreaker={updateIcebreaker}
-                />
-                {/* <IcebreakerList /> */}
+                <Home user={user} />
               </Route>
               <Route path="/new">
                 <NewIcebreaker user={user} addIcebreaker={addIcebreaker} />
