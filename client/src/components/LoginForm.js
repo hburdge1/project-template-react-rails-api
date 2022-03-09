@@ -10,7 +10,7 @@ function LoginForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("http://localhost:6001/users", {
+    fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

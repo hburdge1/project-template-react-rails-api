@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./FlipCard.css";
 
-export default function FlipCard({
+function FlipCard({
   content,
   category,
   flames,
@@ -30,7 +30,6 @@ export default function FlipCard({
     </div>
   );
 }
-<<<<<<< HEAD
 // <div className="flip-card-inner" onClick={() => handleOnClick}>
 //   {!isFlipped ? (
 //     <div className="flip-card-front">
@@ -48,7 +47,4 @@ export default function FlipCard({
 //     </div>
 //   )}
 // </div>
-=======
-
-export { FlipCard };
->>>>>>> main
+export {FlipCard}

@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
 import { Switch, Route, Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
-import { fetchAllIcebreakers } from "../api";
-=======
-import { Switch, Route } from "react-router-dom";
->>>>>>> main
+import { fetchAllIcebreakers } from "./Api";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import IcebreakerList from "../pages/IcebreakerList";
 import NewIcebreaker from "../pages/NewIcebreaker";
 import Home from "../pages/Home";
+import SignUpForm from "./SignUpForm";
 
 function App() {
   const [user, setUser] = useState(null);
   const [seeIceBreakers, setIceBreakers] = useState([]);
   const history = useHistory();
   // get all icebreakers
-  useEffect(() => {
-    fetchAllIcebreakers().then((res) => setIceBreakers(res));
-  }, [seeIceBreakers]);
+    useEffect(() => {
+    // auto-login
+    fetch("/icebreakers").then((r) => {
+      if (r.ok) {
+        r.json().then((res) => setIceBreakers(res));
+      }
+    });
+  }, []);
 
   // add icebreakers
   const addIcebreaker = (icebreaker) => {
@@ -34,7 +36,7 @@ function App() {
   //update icebreakers
   const updateIcebreaker = (id, flames) => {
     //PATCH
-    fetch(`http://localhost:6001/icebreakers/${id}`, {
+    fetch(`/icebreakers/${id}`, {
       method: "PATCH",
       body: JSON.stringify({ flames }),
     }).then(() => {
@@ -49,16 +51,9 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
 
-  // if (!user) return <Login onLogin={setUser} />;
+
+  if (!user) return <Login onLogin={setUser} />;
 
   return (
     <>
@@ -68,9 +63,6 @@ function App() {
 
           <main>
             <Switch>
-              <Route path="/new">
-                <NewIcebreaker user={user} addIcebreaker={addIcebreaker} />
-              </Route>
               <Route path="/">
                 <Home
                   seeIceBreakers={seeIceBreakers}
@@ -78,21 +70,19 @@ function App() {
                 />
                 {/* <IcebreakerList /> */}
               </Route>
+              <Route path="/new">
+                <NewIcebreaker user={user} addIcebreaker={addIcebreaker} />
+              </Route>
             </Switch>
           </main>
         </div>
       ) : (
         <Switch>
           <Route path="/signup">
-            <Login onLogin={onAuth} />
+              <SignUpForm user={user}/>
           </Route>
-<<<<<<< HEAD
-          <Route path="*">
-            <Redirect to="/signup" />
-=======
-          <Route path="/icebreakers">
-            <IcebreakerList />
->>>>>>> main
+          <Route path="/login">
+              <Login onLogin={onAuth}/>
           </Route>
         </Switch>
       )}
