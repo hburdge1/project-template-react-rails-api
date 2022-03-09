@@ -9,14 +9,21 @@ import SignUpForm from "./SignUpForm";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [seeIceBreakers, setIceBreakers] = useState("");
   const history = useHistory();
 
   // handle auth
   const onAuth = (user) => {
-    setUser(user.username, user.password, user.id);
-    history.push("/");
+    setUser(user);
   };
 
+  useEffect(() => {
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((u) => setUser(u));
+      }
+    });
+  }, []);
   //update icebreakers
   const updateIcebreaker = (id, flames) => {
     //PATCH
@@ -34,11 +41,6 @@ function App() {
       );
     });
   };
-
-
-
-  if (!user) return <Login onLogin={setUser} />;
-
   return (
     <>
       {user ? (
@@ -46,14 +48,11 @@ function App() {
           <NavBar user={user} setUser={setUser} />
           <main>
             <Switch>
-              <Route path="/new">
-                <NewIcebreaker user={user} />
-              </Route>
               <Route path="/">
                 <Home user={user} />
               </Route>
               <Route path="/new">
-                <NewIcebreaker user={user} addIcebreaker={addIcebreaker} />
+                <NewIcebreaker user={user} addIcebreaker={updateIcebreaker} />
               </Route>
             </Switch>
           </main>
@@ -61,10 +60,10 @@ function App() {
       ) : (
         <Switch>
           <Route path="/signup">
-              <SignUpForm user={user}/>
+            <SignUpForm user={user} />
           </Route>
-          <Route path="/login">
-              <Login onLogin={onAuth}/>
+          <Route path="/">
+            <Login onLogin={onAuth} history={history} />
           </Route>
         </Switch>
       )}

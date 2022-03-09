@@ -1,7 +1,6 @@
-import React, { useState, createRef } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import { FlipCard } from "../components/FlipCard.js";
-import updateIcebreaker from "../components/App"
-
+import updateIcebreaker from "../components/App";
 
 function WelcomeCard({ user }) {
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -9,15 +8,15 @@ function WelcomeCard({ user }) {
 
   // get all icebreakers
   useEffect(() => {
-    fetch("http://localhost:6001/icebreakers").then((res) =>
-      setIceBreakers(res)
-    );
+    fetch("/icebreakers")
+      .then((res) => res.json())
+      .then((data) => setIceBreakers(data));
   }, []);
 
   //update icebreakers
   const updateIcebreaker = (id, flames) => {
     //PATCH
-    fetch(`http://localhost:6001/icebreakers/${id}`, {
+    fetch(`/icebreakers/${id}`, {
       method: "PATCH",
       body: JSON.stringify({ flames }),
     }).then(() => {
@@ -34,7 +33,7 @@ function WelcomeCard({ user }) {
 
   return (
     <>
-      <h2 className="title">Welcome, {user}!</h2>
+      <h2 className="title">Welcome, {user.username}!</h2>
       <div className="card-container">
         {seeIceBreakers.map((ice) => (
           <div className="card-item-container">

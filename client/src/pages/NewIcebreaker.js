@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
-import "../Components/FlipCard.css";
+import "../components/FlipCard.css";
 
 function NewIcebreaker({ user, addIcebreaker }) {
   const [category, setCategory] = useState("");

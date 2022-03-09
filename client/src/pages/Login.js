@@ -12,7 +12,7 @@ function Login({ onLogin }) {
       <Logo>N-Tro</Logo>
       {showLogin ? (
         <>
-          <LoginForm onLogin={onLogin} />
+          <LoginForm onLogin={onLogin}  />
           <Divider />
           <p>
             Don't have an account? &nbsp;
