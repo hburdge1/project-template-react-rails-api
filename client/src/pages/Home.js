@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FlipCard from "../Components/FlipCard";
-import { fetchAllIcebreakers } from "../api";
+// import { fetchAllIcebreakers } from "../api";
 
 function WelcomeCard({ user }) {
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -8,7 +8,9 @@ function WelcomeCard({ user }) {
 
   // get all icebreakers
   useEffect(() => {
-    fetchAllIcebreakers().then((res) => setIceBreakers(res));
+    fetch("http://localhost:6001/icebreakers").then((res) =>
+      setIceBreakers(res)
+    );
   }, []);
 
   //update icebreakers
@@ -19,7 +21,7 @@ function WelcomeCard({ user }) {
       body: JSON.stringify({ flames }),
     }).then(() => {
       setIceBreakers(
-        seeIceBreakers.map((ice) => {
+        seeIceBreakers.icebreakers.map((ice) => {
           if (ice.id === id) {
             ice.flames = flames;
           }

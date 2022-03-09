@@ -30,25 +30,5 @@ export default function FlipCard({
     </div>
   );
 }
-<<<<<<< HEAD
-// <div className="flip-card-inner" onClick={() => handleOnClick}>
-//   {!isFlipped ? (
-//     <div className="flip-card-front">
-//       <h3 className="card-title">{category}</h3>
-//       <p>{flames}</p>
-//     </div>
-//   ) : (
-//     <div className="flip-card-back">
-//       <h2>{content}</h2>
-//       <h4>{category}</h4>
-//       <p>Flames: {flames}</p>
-//       <button className="primary" onClick={updateIcebreaker}>
-//         Add flame
-//       </button>
-//     </div>
-//   )}
-// </div>
-=======
 
 export { FlipCard };
->>>>>>> main
