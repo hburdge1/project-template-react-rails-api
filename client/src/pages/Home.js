@@ -8,9 +8,11 @@ function WelcomeCard({ user }) {
 
   // get all icebreakers
   useEffect(() => {
-    fetch("http://localhost:6001/icebreakers").then((res) =>
-      setIceBreakers(res)
-    );
+    fetch("http://localhost:6001/icebreakers")
+      .then((res) => res.json())
+      .then((res) => {
+        setIceBreakers(res);
+      });
   }, []);
 
   //update icebreakers
@@ -21,7 +23,7 @@ function WelcomeCard({ user }) {
       body: JSON.stringify({ flames }),
     }).then(() => {
       setIceBreakers(
-        seeIceBreakers.icebreakers.map((ice) => {
+        seeIceBreakers.map((ice) => {
           if (ice.id === id) {
             ice.flames = flames;
           }
