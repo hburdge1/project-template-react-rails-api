@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./FlipCard.css";
-// import ResponseForm from "./ResponseForm";
-
+import ResponseForm from "./ResponseForm";
 function FlipCard({
   content,
   category,
@@ -21,12 +20,13 @@ function FlipCard({
   return (
     <div className="flip-card">
       <div className="flip-card-inner">
-        <div className={"flip-card-front"}>
-          <h2>{category}</h2>
+        <div className="flip-card-front">
+          <h2>Flip a card to see the intro</h2>
+          <h3>Activity or Question?</h3>
         </div>
         <div className="flip-card-back">
-          <h2>{tags}</h2>
-          <p>Description: {content}</p>
+          <h2>Type: {tags}</h2>
+          <p>{content}</p>
           <p>🔥 : {flames}</p>
           <button className="primary" onClick={updateIcebreaker}>
             Add flame
@@ -34,9 +34,9 @@ function FlipCard({
           <button className="primary" onClick={onClick}>
             Respond
           </button>
-          {/* {showResponse ? (
+          {showResponse ? (
             <ResponseForm icebreaker={icebreaker} user={user} />
-          ) : null} */}
+          ) : null}
         </div>
       </div>
     </div>

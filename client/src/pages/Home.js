@@ -1,8 +1,8 @@
 import React, { useState, useEffect, createRef } from "react";
-import "../Components/FlipCard.css";
+import "../components/FlipCard.css";
 import IcebreakerList from "./IcebreakerList";
 
-function WelcomeCard({ user }) {
+function Home({ user }) {
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
@@ -15,4 +15,4 @@ function WelcomeCard({ user }) {
   );
 }
 
-export default WelcomeCard;
+export default Home;

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory, RouteProps, Route } from "react-router";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
-import "../Components/FlipCard.css";
+import "../components/FlipCard.css";
 
-function NewIcebreaker({ user, addIcebreaker }) {
+function NewIcebreaker({ user, addIceBreaker }) {
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
   const [tags, setTags] = useState("");
@@ -17,7 +17,7 @@ function NewIcebreaker({ user, addIcebreaker }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("http://localhost:6001/icebreakers", {
+    fetch("/icebreakers", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +53,7 @@ function NewIcebreaker({ user, addIcebreaker }) {
           </div>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>Category: </label>git
+              <label>Category: </label>
               <select
                 type="text"
                 value={category}

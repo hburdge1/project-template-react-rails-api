@@ -17,6 +17,7 @@ function SignUpForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setErrors([]);
+    if (e.target.password !== e.target.passwordConfirmation){
     setIsLoading(true);
     fetch("/signup", {
       method: "POST",
@@ -35,10 +36,14 @@ function SignUpForm({ onLogin }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+    }
+    else{
+
+    }
    }
 
   return (
-    <form onSubmit={(password.value === passwordConfirmation.value)? {handleSubmit} : {displayError}}>
+    <form onSubmit={handleSubmit}>
       <FormField>
         <Label htmlFor="username">Username</Label>
         <Input

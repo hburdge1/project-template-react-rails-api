@@ -16,19 +16,17 @@ ActiveRecord::Schema.define(version: 2022_03_07_163042) do
   enable_extension "plpgsql"
 
   create_table "icebreakers", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "content"
-    t.boolean "filled"
     t.string "tags"
+    t.integer "flames"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_icebreakers_on_user_id"
   end
 
   create_table "responses", force: :cascade do |t|
     t.integer "user_id"
     t.integer "icebreaker_id"
-    t.string "content"
+    t.string "response"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,5 +53,4 @@ ActiveRecord::Schema.define(version: 2022_03_07_163042) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "icebreakers", "users"
 end

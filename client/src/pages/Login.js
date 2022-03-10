@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import LoginForm from "../Components/LoginForm";
-import SignUpForm from "../Components/SignUpForm";
+import LoginForm from "../components/LoginForm";
+import SignUpForm from "../components/SignUpForm";
 import { Button } from "../styles";
 
 function Login({ onLogin }) {
@@ -12,7 +12,7 @@ function Login({ onLogin }) {
       <Logo>N-Tro</Logo>
       {showLogin ? (
         <>
-          <LoginForm onLogin={onLogin} />
+          <LoginForm onLogin={onLogin}  />
           <Divider />
           <p>
             Don't have an account? &nbsp;

@@ -4,7 +4,7 @@ class IcebreakersController < ApplicationController
   end
 
   def show
-    render json: Icebreaker.find_by(params: param[:icebreaker_id]), include: :response
+    render json: Icebreaker.find_by(params[:icebreaker_id]), include: :response
   end
 
   def create

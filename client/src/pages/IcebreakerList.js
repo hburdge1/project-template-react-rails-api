@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
 import NewIcebreaker from "./NewIcebreaker";
-import MoreButton from "../Components/MoreButton.js";
-import { FlipCard } from "../Components/FlipCard.js";
+import MoreButton from "../components/MoreButton.js";
+import { FlipCard } from "../components/FlipCard.js";
 
 function IcebreakerList() {
   const initialPage = 0;
