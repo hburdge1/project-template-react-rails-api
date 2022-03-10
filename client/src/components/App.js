@@ -17,6 +17,10 @@ function App() {
     setUser(user);
   };
 
+  const addIceBreaker = (i) => {
+    setIceBreakers((icebreakers) => [...icebreakers, i]);
+  };
+
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
@@ -49,14 +53,14 @@ function App() {
           <NavBar user={user} setUser={setUser} />
           <main>
             <Switch>
-              <Route path="/">
+              <Route exact path="/">
                 <Home user={user} />
               </Route>
               <Route path="/me">
                 <Home user={user} />
               </Route>
               <Route path="/new">
-                <NewIcebreaker user={user} addIcebreaker={updateIcebreaker} />
+                <NewIcebreaker user={user} addIcebreaker={addIceBreaker} />
               </Route>
             </Switch>
           </main>

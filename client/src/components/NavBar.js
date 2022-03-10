@@ -18,13 +18,14 @@ function NavBar({ user, setUser }) {
         <Link to="/">N-Tro</Link>
       </Logo>
       <Nav>
-        <Button as={Link} to="/new">
+        <Button user={user} as={Link} to="/new">
           New Icebreaker
         </Button>
+        {/* <Link to="/new">New Icebreaker</Link> */}
         <Button as={Link} to="/icebreakers">
           Show my icebreakers
-        </Button>
-        <Button variant="outline" onClick={handleLogoutClick}>
+        </Button> 
+         <Button variant="outline" onClick={handleLogoutClick}>
           Logout
         </Button>
       </Nav>
