@@ -5,11 +5,13 @@ import { Button } from "../styles";
 
 function NavBar({ user, setUser }) {
   function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
+    fetch(`http://localhost:6001/icebreakers`, { method: "DELETE" }).then(
+      (r) => {
+        if (r.ok) {
+          setUser(null);
+        }
       }
-    });
+    );
   }
 
   return (

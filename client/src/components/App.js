@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import NewIcebreaker from "../pages/NewIcebreaker";
+import IcebreakerList from "../pages/IcebreakerList";
 import Home from "../pages/Home";
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
               <Route path="/new">
                 <NewIcebreaker user={user} />
               </Route>
+              <Route path="/icebreakers">
+                <IcebreakerList user={user} />
+              </Route>
               <Route path="/">
                 <Home user={user} />
               </Route>
@@ -45,11 +49,11 @@ function App() {
         </div>
       ) : (
         <Switch>
-          <Route path="/signup">
+          <Route path="/login">
             <Login onLogin={onAuth} />
           </Route>
           <Route path="*">
-            <Redirect to="/signup" />
+            <Redirect to="/login" />
           </Route>
         </Switch>
       )}

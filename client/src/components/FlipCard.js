@@ -19,7 +19,7 @@ export default function FlipCard({
           <h2>{category}</h2>
         </div>
         <div className="flip-card-back">
-          <h2>Type: {category}</h2>
+          <h2>{category}</h2>
           <p>Description: {content}</p>
           <p>🔥 : {flames}</p>
           <button className="primary" onClick={updateIcebreaker}>
