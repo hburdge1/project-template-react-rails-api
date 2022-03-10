@@ -7,6 +7,8 @@ function FlipCard({
   flames,
   updateIcebreaker,
   icebreaker,
+  seeIceBreakers, 
+  setIceBreakers,
   user,
   tags
 }) {

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useHistory} from "react";
 import { Button, Error, Input, FormField, Label, onAuth } from "../styles";
 
 
 
-function ResponseForm({user, icebreaker, }){
+function ResponseForm({user, icebreaker, history, addIcebreaker}){
     const [response, setResponse] = useState("")
     const [errors, setErrors] = useState([]);
   function handleSubmit(e) {
@@ -20,8 +20,8 @@ function ResponseForm({user, icebreaker, }){
     }).then((r) => {
     //   setIsLoading(false);
       if (r.ok) {
-        // history.push("/");
-        // addIcebreaker(r);
+        history.push("/");
+        addIcebreaker(r);
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

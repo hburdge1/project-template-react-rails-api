@@ -50,7 +50,7 @@ function App() {
     <>
       {user ? (
         <div>
-          <NavBar user={user} setUser={setUser} />
+          <NavBar seeIceBreakers={seeIceBreakers} setIceBreakers={setIceBreakers} user={user} setUser={setUser} />
           <main>
             <Switch>
               <Route exact path="/">

@@ -5,14 +5,17 @@ import ReactMarkdown from "react-markdown";
 import { Button, Error, FormField, Input, Label, Textarea } from "../styles";
 import "../components/FlipCard.css";
 
-function NewIcebreaker({ user, addIceBreaker }) {
-  debugger;
+function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [response, setResponse] = useState('')
   const history = useHistory();
   const flames = 0;
+  const addIceBreaker = (i) => {
+    setIceBreakers((icebreakers) => [...icebreakers, i]);
+  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,19 +23,20 @@ function NewIcebreaker({ user, addIceBreaker }) {
     fetch("/icebreakers", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-category": "application/json",
       },
       body: JSON.stringify({
-        content,
-        category,
-        flames,
-        user,
+        content: {content},
+        category: {category},
+        flames: 0,
+        user: user,
+        response: {response}
       }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
         history.push("/");
-        // addIcebreaker(r);
+        addIceBreaker(r);
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -52,9 +56,9 @@ function NewIcebreaker({ user, addIceBreaker }) {
           </div>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>Category: </label>
+              <label>category: </label>
               <select
-                type="text"
+                category="text"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
@@ -63,25 +67,30 @@ function NewIcebreaker({ user, addIceBreaker }) {
               </select>
             </div>
             <FormField>
-              <Label>Description:</Label>
+              <Label>Write your icebreaker:</Label>
               <Input
-                type="string"
+                category="string"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
+              />
+              <Input
+                category="string"
+                value={response}
+                onChange={(e) => setResponse(e.target.value)}
               />
             </FormField>
             <cite>
               By {user.username} {Date().toLocaleString()}
             </cite>
             <FormField>
-              <Button color="primary" type="submit">
+              <Button color="primary" category="submit">
                 {isLoading ? "Loading..." : "Submit Intro"}
               </Button>
             </FormField>
             <FormField>
-              {errors.map((err) => (
+              {/* {errors.map((err) => (
                 <Error key={err}>{err}</Error>
-              ))}
+              ))} */}
             </FormField>
           </form>
         </div>

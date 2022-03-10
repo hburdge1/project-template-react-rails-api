@@ -38,7 +38,8 @@ function Home({ user }) {
       <div className="card-container">
         {Array.from(seeIceBreakers).map((ice) => (
           <div className="card-item-container">
-            <FlipCard
+            <FlipCard seeIceBreakers={seeIceBreakers} 
+              setIceBreakers={seeIceBreakers}
               content={ice.content}
               tags={ice.tags}
               flames={ice.flames}
