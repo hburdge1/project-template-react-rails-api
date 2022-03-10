@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import "./FlipCard.css";
+// import ResponseForm from "./ResponseForm";
 
-export default function FlipCard({
+function FlipCard({
   content,
   category,
   flames,
   updateIcebreaker,
+  icebreaker,
+  user,
+  tags,
 }) {
+  const [showResponse, setShowResponse] = useState(false);
+  const onClick = () => setShowResponse(!showResponse);
   // const [isFlipped, setIsFlipped] = useState(false);
 
   // const handleOnClick = () => {
@@ -15,16 +21,22 @@ export default function FlipCard({
   return (
     <div className="flip-card">
       <div className="flip-card-inner">
-        <div className="flip-card-front">
+        <div className={"flip-card-front"}>
           <h2>{category}</h2>
         </div>
         <div className="flip-card-back">
-          <h2>{category}</h2>
+          <h2>{tags}</h2>
           <p>Description: {content}</p>
           <p>🔥 : {flames}</p>
           <button className="primary" onClick={updateIcebreaker}>
             Add flame
           </button>
+          <button className="primary" onClick={onClick}>
+            Respond
+          </button>
+          {/* {showResponse ? (
+            <ResponseForm icebreaker={icebreaker} user={user} />
+          ) : null} */}
         </div>
       </div>
     </div>

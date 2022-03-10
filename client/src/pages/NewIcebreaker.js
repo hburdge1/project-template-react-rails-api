@@ -8,6 +8,7 @@ import "../Components/FlipCard.css";
 function NewIcebreaker({ user, addIcebreaker }) {
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
+  const [tags, setTags] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
@@ -24,6 +25,7 @@ function NewIcebreaker({ user, addIcebreaker }) {
       body: JSON.stringify({
         content,
         category,
+        tags,
         flames,
         user,
       }),
@@ -40,50 +42,51 @@ function NewIcebreaker({ user, addIcebreaker }) {
 
   return (
     <Wrapper>
-      <div>
-        <div className="">
-          <h2>Create New Intro</h2>
-          <h4>
-            Choose between an Activity or a Question and give a detailed
-            description as to what should happen or be asked to the grpup.{" "}
-          </h4>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="category">Category: </label>
-            <select
-              type="text"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="Activity">Activity</option>
-              <option value="Question">Question</option>
-            </select>
+      <WrapperChild>
+        <div>
+          <div className="">
+            <h2>Create New Intro</h2>
+            <h4>
+              Choose between an Activity or a Question and give a detailed
+              description as to what should happen or be asked to the grpup.{" "}
+            </h4>
           </div>
-          <FormField>
-            <Label htmlFor="postedBy">Description:</Label>
-            <Input
-              type="string"
-              id="phraseUser"
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-            />
-          </FormField>
-          <cite>
-            By {user} {Date().toLocaleString()}
-          </cite>
-          <FormField>
-            <Button color="primary" type="submit">
-              {isLoading ? "Loading..." : "Submit Icebreaker"}
-            </Button>
-          </FormField>
-          <FormField>
-            {/* {errors.map((err) => (
-              <Error key={err}>{err}</Error>
-            ))} */}
-          </FormField>
-        </form>
-      </div>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Category: </label>git
+              <select
+                type="text"
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
+                <option value="Activity">Activity</option>
+                <option value="Question">Question</option>
+              </select>
+            </div>
+            <FormField>
+              <Label>Description:</Label>
+              <Input
+                type="string"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+            </FormField>
+            <cite>
+              By {user.username} {Date().toLocaleString()}
+            </cite>
+            <FormField>
+              <Button color="primary" type="submit">
+                {isLoading ? "Loading..." : "Submit Intro"}
+              </Button>
+            </FormField>
+            <FormField>
+              {errors.map((err) => (
+                <Error key={err}>{err}</Error>
+              ))}
+            </FormField>
+          </form>
+        </div>
+      </WrapperChild>
       <div className="">
         <h1>{content}</h1>
         <h3>{category}</h3>

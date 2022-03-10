@@ -4,66 +4,61 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
 import NewIcebreaker from "./NewIcebreaker";
-import Pagination from "react-bootstrap/Pagination";
+import MoreButton from "../Components/MoreButton.js";
+import { FlipCard } from "../Components/FlipCard.js";
 
 function IcebreakerList() {
-  const [icebreakers, setIcebreakers] = useState([]);
+  const initialPage = 0;
+  const [seeIceBreakers, setIceBreakers] = useState([]);
+  const [currentPage, setPage] = useState(initialPage);
 
-  let active = 2;
-  let items = [];
-  for (let number = 1; number <= 5; number++) {
-    items.push(
-      <Pagination.Item key={number} active={number === active}>
-        {number}
-      </Pagination.Item>
-    );
-  }
+  const handleNextPage = () => {
+    setPage(currentPage + 1);
+  };
 
-  const paginationBasic = (
-    <div>
-      <Pagination>{items}</Pagination>
-      <br />
+  // get all icebreakers
+  useEffect(() => {
+    fetch("/icebreakers")
+      .then((res) => res.json())
+      .then((data) => setIceBreakers(data));
+  }, []);
 
-      <Pagination size="lg">{items}</Pagination>
-      <br />
+  //update icebreakers
+  const updateIcebreaker = (id, flames) => {
+    //PATCH
+    let flames_a = flames + 1;
+    fetch(`/icebreakers/${id}`, {
+      method: "POST",
+      body: JSON.stringify({ flames: flames_a }),
+    }).then(() => {
+      setIceBreakers(
+        seeIceBreakers.map((ice) => {
+          if (ice.id === id) {
+            ice.flames = flames;
+          }
+          return ice;
+        })
+      );
+    });
+  };
+  const intros = seeIceBreakers.slice(currentPage * 6, (currentPage + 1) * 6);
 
-      <Pagination size="sm">{items}</Pagination>
+  return (
+    <div className="card-container">
+      {Array.from(intros).map((ice) => (
+        <div className="card-item-container">
+          <FlipCard
+            content={ice.content}
+            tags={ice.tags}
+            flames={ice.flames}
+            key={ice.id}
+            updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
+          />
+        </div>
+      ))}{" "}
+      <MoreButton nextPage={handleNextPage} />
     </div>
   );
-
-  return { paginationBasic };
-  //   useEffect(() => {
-  //     fetch("/icebreakers")
-  //       .then((r) => r.json())
-  //       .then(setIcebreakers);
-  //   }, []);
-
-  //   return (
-  //     <Wrapper>
-  //       {icebreakers.length > 0 ? (
-  //         icebreakers.map((icebreaker) => (
-  //           <NewIcebreaker key={icebreaker.id}>
-  //             <Box>
-
-  //               <p>
-  //                 <em>{icebreaker.filled_portions}</em>
-  //                 &nbsp;·&nbsp;
-  //                 <cite>By {icebreaker.user.username}</cite>
-  //               </p>
-  //               <ReactMarkdown></ReactMarkdown>
-  //             </Box>
-  //           </NewIcebreaker>
-  //         ))
-  //       ) : (
-  //         <>
-  //           <h2>No icebreakers Found</h2>
-  //           <Button as={Link} to="/new">
-  //             Generate an icebreaker!
-  //           </Button>
-  //         </>
-  //       )}
-  //     </Wrapper>
-  //   );
 }
 
 const Wrapper = styled.section`
