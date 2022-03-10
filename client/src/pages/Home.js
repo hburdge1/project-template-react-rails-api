@@ -2,7 +2,7 @@ import React, { useState, useEffect, createRef } from "react";
 import { FlipCard } from "../components/FlipCard.js";
 import updateIcebreaker from "../components/App";
 
-function WelcomeCard({ user }) {
+function Home({ user }) {
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [seeIceBreakers, setIceBreakers] = useState([]);
 
@@ -16,12 +16,13 @@ function WelcomeCard({ user }) {
   //update icebreakers
   const updateIcebreaker = (id, flames) => {
     //PATCH
+    let flames_a = flames + 1
     fetch(`/icebreakers/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({ flames }),
+      method: "POST",
+      body: JSON.stringify({ flames: flames_a }),
     }).then(() => {
       setIceBreakers(
-        seeIceBreakers.icebreakers.map((ice) => {
+        seeIceBreakers.map((ice) => {
           if (ice.id === id) {
             ice.flames = flames;
           }
@@ -35,11 +36,11 @@ function WelcomeCard({ user }) {
     <>
       <h2 className="title">Welcome, {user.username}!</h2>
       <div className="card-container">
-        {seeIceBreakers.map((ice) => (
+        {Array.from(seeIceBreakers).map((ice) => (
           <div className="card-item-container">
             <FlipCard
               content={ice.content}
-              category={ice.category}
+              tags={ice.tags}
               flames={ice.flames}
               key={ice.id}
               updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
@@ -51,4 +52,4 @@ function WelcomeCard({ user }) {
   );
 }
 
-export default WelcomeCard;
+export default Home

@@ -1,3 +1,4 @@
 class IcebreakerSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :content, :flames
+
 end

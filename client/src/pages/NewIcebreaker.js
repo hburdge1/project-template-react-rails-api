@@ -16,7 +16,7 @@ function NewIcebreaker({ user, addIcebreaker }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("http://localhost:6001/icebreakers", {
+    fetch("/icebreakers", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

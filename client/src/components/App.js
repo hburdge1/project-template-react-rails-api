@@ -41,6 +41,7 @@ function App() {
       );
     });
   };
+
   return (
     <>
       {user ? (
@@ -49,6 +50,9 @@ function App() {
           <main>
             <Switch>
               <Route path="/">
+                <Home user={user} />
+              </Route>
+              <Route path="/me">
                 <Home user={user} />
               </Route>
               <Route path="/new">

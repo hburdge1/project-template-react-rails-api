@@ -9,7 +9,7 @@ function IcebreakerList() {
   const [icebreakers, setIcebreakers] = useState([]);
 
   useEffect(() => {
-    fetch("/icebreakers")
+    fetch("/icebreakers/")
       .then((r) => r.json())
       .then(setIcebreakers);
   }, []);
@@ -22,7 +22,7 @@ function IcebreakerList() {
             <Box>
              
               <p>
-                <em>{icebreaker.filled_portions}</em>
+                <em>{icebreaker.content}</em>
                 &nbsp;·&nbsp;
                 <cite>By {icebreaker.user.username}</cite>
               </p>
