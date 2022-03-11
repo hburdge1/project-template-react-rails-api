@@ -1,0 +1,6 @@
+.more-btn {
+  display: flex;
+  flex: row;
+  background-color: rgb(216, 50, 175);
+  max-width: 180px;
+}

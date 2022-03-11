@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
 
-function NavBar({ user, setUser, seeIceBreakers, setIceBreakers}) {
+function NavBar({ user, setUser, seeIceBreakers, setIceBreakers }) {
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -24,8 +24,8 @@ function NavBar({ user, setUser, seeIceBreakers, setIceBreakers}) {
         {/* <Link to="/new">New Icebreaker</Link> */}
         <Button as={Link} to="/icebreakers">
           Show my icebreakers
-        </Button> 
-         <Button variant="outline" onClick={handleLogoutClick}>
+        </Button>
+        <Button variant="outline" onClick={handleLogoutClick}>
           Logout
         </Button>
       </Nav>

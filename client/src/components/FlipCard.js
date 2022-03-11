@@ -10,11 +10,10 @@ function FlipCard({
   seeIceBreakers, 
   setIceBreakers,
   user,
-  tags
+  tags,
 }) {
-
-  const [showResponse, setShowResponse] = useState(false)
-  const onClick = () => setShowResponse(!showResponse)
+  const [showResponse, setShowResponse] = useState(false);
+  const onClick = () => setShowResponse(!showResponse);
   // const [isFlipped, setIsFlipped] = useState(false);
 
   // const handleOnClick = () => {
@@ -24,11 +23,12 @@ function FlipCard({
     <div className="flip-card">
       <div className="flip-card-inner">
         <div className="flip-card-front">
-          <h2>{category}</h2>
+          <h2>Flip a card to see the intro</h2>
+          <h3>Activity or Question?</h3>
         </div>
         <div className="flip-card-back">
           <h2>Type: {tags}</h2>
-          <p>Description: {content}</p>
+          <p>{content}</p>
           <p>🔥 : {flames}</p>
           <button className="primary" onClick={updateIcebreaker}>
             Add flame
@@ -36,7 +36,9 @@ function FlipCard({
           <button className="primary" onClick={onClick}>
             Respond
           </button>
-          {showResponse? <ResponseForm icebreaker ={icebreaker} user = {user}/> : null}
+          {showResponse ? (
+            <ResponseForm icebreaker={icebreaker} user={user} />
+          ) : null}
         </div>
       </div>
     </div>
