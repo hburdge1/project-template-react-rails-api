@@ -4,6 +4,8 @@ class CreateIcebreakers < ActiveRecord::Migration[6.1]
       t.string :content
       t.string :tags
       t.integer :flames
+      t.boolean :favorite
+      t.string  :category
       t.timestamps
     end
   end

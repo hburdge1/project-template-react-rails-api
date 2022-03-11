@@ -44,6 +44,7 @@ function Home({ user }) {
               tags={ice.tags}
               flames={ice.flames}
               key={ice.id}
+              responses={ice.responses}
               updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
             />
           </div>

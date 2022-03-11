@@ -6,7 +6,9 @@ class UsersController < ApplicationController
     session[:user_id] = user.id
     render json: user, status: :created
   end
-
+  def index
+    render json: @current_user, include: icebreaker
+  end
   def show
     render json: @current_user
   end

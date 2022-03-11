@@ -6,6 +6,8 @@ import Login from "../pages/Login";
 import NewIcebreaker from "../pages/NewIcebreaker";
 import Home from "../pages/Home";
 import SignUpForm from "./SignUpForm";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,6 +54,9 @@ function App() {
         <div>
           <NavBar seeIceBreakers={seeIceBreakers} setIceBreakers={setIceBreakers} user={user} setUser={setUser} />
           <main>
+            <Popup  trigger={<button> Trigger</button>} position="right center">
+                did it pop?
+            </Popup>
             <Switch>
               <Route exact path="/">
                 <Home user={user} />

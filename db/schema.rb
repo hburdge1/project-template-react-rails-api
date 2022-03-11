@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2022_03_07_163042) do
     t.string "content"
     t.string "tags"
     t.integer "flames"
+    t.boolean "favorite"
+    t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

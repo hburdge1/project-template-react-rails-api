@@ -13,8 +13,8 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
   const [response, setResponse] = useState('')
   const history = useHistory();
   const flames = 0;
-  const addIceBreaker = (i) => {
-    setIceBreakers((icebreakers) => [...icebreakers, i]);
+    function addIceBreaker(i) {
+    setIceBreakers([...seeIceBreakers, i]);
   };
 
   function handleSubmit(e) {
@@ -30,7 +30,6 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
         category: {category},
         flames: 0,
         user: user,
-        response: {response}
       }),
     }).then((r) => {
       setIsLoading(false);
