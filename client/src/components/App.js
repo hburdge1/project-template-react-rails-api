@@ -4,15 +4,14 @@ import { useHistory } from "react-router";
 import NavBar from "./NavBar";
 import Login from "../pages/Login";
 import NewIcebreaker from "../pages/NewIcebreaker";
-import IcebreakerList from "../pages/IcebreakerList";
 import Home from "../pages/Home";
 import SignUpForm from "./SignUpForm";
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [seeIceBreakers, setIceBreakers] = useState("");
+  const [seeIceBreakers, setIceBreakers] = useState([]);
   const history = useHistory();
 
   // handle auth
@@ -31,20 +30,46 @@ function App() {
       }
     });
   }, []);
+  //update icebreakers
+  const updateIcebreaker = (id, flames) => {
+    //PATCH
+    fetch(`/icebreakers/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({ flames }),
+    }).then(() => {
+      setIceBreakers(
+        seeIceBreakers.map((ice) => {
+          if (ice.id === id) {
+            ice.flames = flames;
+          }
+          return ice;
+        })
+      );
+    });
+  };
 
   return (
     <>
       {user ? (
         <div>
-          <NavBar seeIceBreakers={seeIceBreakers} setIceBreakers={setIceBreakers} user={user} setUser={setUser} />
+          <NavBar
+            seeIceBreakers={seeIceBreakers}
+            setIceBreakers={setIceBreakers}
+            user={user}
+            setUser={setUser}
+          />
           <main>
 
             <Switch>
               <Route exact path="/">
-                <Home user={user} seeIceBreakers={seeIceBreakers} addIcebreaker={addIceBreaker} />
+                <Home
+                  seeIceBreakers={seeIceBreakers}
+                  updateIcebreaker={updateIcebreaker}
+                  user={user}
+                />
               </Route>
               <Route path="/me">
-                <Home user={user} />
+                <Home seeIceBreakers={seeIceBreakers} user={user} />
               </Route>
               <Route path="/new">
                 <NewIcebreaker user={user} addIcebreaker={addIceBreaker} />

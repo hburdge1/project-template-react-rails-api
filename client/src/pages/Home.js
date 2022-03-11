@@ -2,16 +2,23 @@ import React, { useState, useEffect, createRef } from "react";
 import "../components/FlipCard.css";
 import IcebreakerList from "./IcebreakerList";
 import { FlipCard } from "../components/FlipCard";
-function Home({ user, seeIceBreakers, setIceBreakers, updateIcebreaker, addIceBreaker }) {
+function Home({
+  user,
+  seeIceBreakers,
+  setIceBreakers,
+  updateIcebreaker,
+  addIceBreaker,
+}) {
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
     <>
       <h2 className="title">Welcome, {user.username}!</h2>
       <div className="card-container">
-        {Array.from(seeIceBreakers).map((ice) => (
-          <div className="card-item-container">
-            <FlipCard seeIceBreakers={seeIceBreakers} 
+        {seeIceBreakers.map((ice) => (
+          <div className="card-item-container" key={ice.id}>
+            <FlipCard
+              seeIceBreakers={seeIceBreakers}
               setIceBreakers={setIceBreakers}
               content={ice.content}
               tags={ice.tags}
@@ -21,13 +28,11 @@ function Home({ user, seeIceBreakers, setIceBreakers, updateIcebreaker, addIceBr
               id={ice.id}
               favorite={ice.favorite}
               icebreaker={ice}
-              addIcebreaker={addIceBreaker} 
+              addIcebreaker={addIceBreaker}
               updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
             />
           </div>
-          
-        ))
-        }
+        ))}
       </div>
       <h2 className="title">
         Hi <span className="title-span">{user.username}</span>!
@@ -35,7 +40,6 @@ function Home({ user, seeIceBreakers, setIceBreakers, updateIcebreaker, addIceBr
       <IcebreakerList />
     </>
   );
-
 }
 
 export default Home;

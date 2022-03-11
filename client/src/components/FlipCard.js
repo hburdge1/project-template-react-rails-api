@@ -43,15 +43,14 @@ function FlipCard({
           <button className="primary" onClick={updateIcebreaker}>
             Add flame
           </button>
-          <button id='btn' className="primary" onClick={onClick}>
-            Respond
+           <button className="primary" onClick={removeIntro}>
+            Delete this intro
           </button>
-          {showResponse? (
-          <Popup trigger={<button> Trigger</button>} position="right center">
+          
+          <Popup trigger={<button>Respond</button>} position="right center">
           <ResponseForm user={user} icebreaker={icebreaker} addIcebreaker={addIcebreaker}/>
           
           </Popup>
-  ) : (null)}
       </div>
     </div>
     </div>

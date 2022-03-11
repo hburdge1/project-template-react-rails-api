@@ -2,6 +2,7 @@ require "application_responder"
 
 
 class ApplicationController < ActionController::API
+  include ActionController::RequestForgeryProtection
   self.responder = ApplicationResponder
   respond_to :html
 

@@ -9,9 +9,8 @@ Rails.application.routes.draw do
     get "/icebreakers", to: "icebreakers#index"
     post "/responses", to: "responses#create"
     get '/icebreakers/:id', to: "icebreaker#show"
-    put '/icebreakers/:id/update', to: "icebreakers#update"
+    post '/icebreakers/:id/update', to: "icebreakers#update"
     patch '/responses/:id/update', to: "response#update"
-    root 'icebreakers/'
     resources :icebreakers
     resources :work_groups
     resources :users

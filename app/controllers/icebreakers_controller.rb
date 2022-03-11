@@ -17,6 +17,12 @@ class IcebreakersController < ApplicationController
     icebreaker = @current_user.icebreakers.create!(icebreaker_params)
     render json: icebreaker, status: :created
   end
+  
+  def destroy
+    @icebreaker = Icebreaker.find(:icebreaker_id)
+    @icebreaker.destroy
+    redirect_to "/icebreakers"
+  end
 
   private
 

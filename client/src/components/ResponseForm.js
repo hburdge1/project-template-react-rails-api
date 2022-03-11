@@ -18,8 +18,7 @@ function ResponseForm({user, icebreaker, responses, patchIcebreaker, addIcebreak
       },
       body: JSON.stringify({
         "response": response,
-        "icebreaker_id": 
-      }),
+        "icebreaker_id": icebreaker.id})
             
     }).then((r) => {
     //   setIsLoading(false);

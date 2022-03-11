@@ -1,18 +1,18 @@
 class ResponsesController < ApplicationController
-
+    skip_before_action :verify_authenticity_token
    def index
     render json: Response.all
   end
 
   def create
     icebreaker = Response.create!(icebreaker_params)
-    render json: icebreaker, include: :responses, status: :created
+    render json: :responses, status: :created
   
   end
   def update(icebreaker_params)
           object = Icebreaker.find_by(params[:icebreaker_id])
           object.update_attributes(icebreaker_params)
-          object.save!
+          render json: object
    end
   
   private

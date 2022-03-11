@@ -32,7 +32,7 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
       setIsLoading(false);
       if (r.ok) {
         history.push("/")
-        setIceBreakers([...seeIceBreakers, r])
+        setIceBreakers(seeIceBreakers + r)
       }
     })
   }
@@ -61,12 +61,13 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
               </select>
             </div>
             <FormField>
-              <Label>Write your icebreaker:</Label>
+              <Label>Write your intro:</Label>
               <Input
                 category="string"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
               />
+              <Label>Add your response:</Label>
               <Input
                 category="string"
                 value={response}
