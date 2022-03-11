@@ -4,7 +4,7 @@ import "./moreButton.css";
 function MoreButton({ nextPage }) {
   return (
     <button className="more-btn" onClick={nextPage}>
-      More intros!
+      More Intros
     </button>
   );
 }

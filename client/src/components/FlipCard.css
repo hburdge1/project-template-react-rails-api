@@ -7,7 +7,6 @@
   width: 33%;
   padding: 20px;
   height: 300px;
-  overflow: hidden;
 }
 .card-item-button {
   text-align: center;
@@ -16,8 +15,8 @@
 .flip-card {
   width: 100%;
   height: 100%;
-  border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  padding-bottom: 10px;
 }
 
 /* This container is needed to position the front and back side */
@@ -49,6 +48,7 @@
 .flip-card-front {
   background-image: url("https://s3.envato.com/files/252189512/preview.jpg");
   color: black;
+  opacity: 0.75;
 }
 
 /* Style the back side */
@@ -64,5 +64,5 @@
 }
 .title-span {
   font-family: cursive bold;
-  color: #300e44;
+  color: #ffffff;
 }

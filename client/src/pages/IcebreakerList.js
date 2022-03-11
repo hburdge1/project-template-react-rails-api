@@ -8,7 +8,7 @@ import MoreButton from "../components/MoreButton.js";
 import { FlipCard } from "../components/FlipCard.js";
 
 function IcebreakerList() {
-  const initialPage = 0;
+  let initialPage = 0;
   const [seeIceBreakers, setIceBreakers] = useState([]);
   const [currentPage, setPage] = useState(initialPage);
 
@@ -57,7 +57,9 @@ function IcebreakerList() {
         </div>
       ))}
       <div className="">
-        <MoreButton nextPage={handleNextPage} />
+        <div className="">
+          <MoreButton nextPage={handleNextPage} />
+        </div>
       </div>
     </div>
   );
