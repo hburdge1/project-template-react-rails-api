@@ -14,6 +14,8 @@ function FlipCard({
   responses,
   id,
   favorite,
+  seeIceBreakers,
+  removeIntro,
   user,
   tags,
 }) {

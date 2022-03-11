@@ -8,12 +8,24 @@ import MoreButton from "../components/MoreButton.js";
 import { FlipCard } from "../components/FlipCard.js";
 
 function IcebreakerList() {
-  const initialPage = 0;
+  let initialPage = 0;
   const [seeIceBreakers, setIceBreakers] = useState([]);
   const [currentPage, setPage] = useState(initialPage);
 
   const handleNextPage = () => {
     setPage(currentPage + 1);
+  };
+
+  const removeIntro = (id) => {
+    fetch(`icebreakers/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    setIceBreakers(
+      seeIceBreakers.filter((i) => {
+        return i.id !== id;
+      })
+    );
   };
 
   // get all icebreakers
@@ -53,12 +65,16 @@ function IcebreakerList() {
             flames={ice.flames}
             id={ice.id}
             icebreaker={ice}
+            key={ice.id}
+            removeIntro={removeIntro}
             updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
           />
         </div>
       ))}
       <div className="">
-        <MoreButton nextPage={handleNextPage} />
+        <div className="">
+          <MoreButton nextPage={handleNextPage} />
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 .more-btn {
-  display: flex;
-  flex: row;
   background-color: rgb(216, 50, 175);
-  max-width: 180px;
+  margin-left: 425px;
+  width: 280px;
+  height: 80px;
+  font-size: 26px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
