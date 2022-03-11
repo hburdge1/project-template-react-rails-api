@@ -7,6 +7,11 @@
   width: 33%;
   padding: 20px;
   height: 300px;
+  overflow: hidden;
+}
+.card-item-button {
+  text-align: center;
+  background-color: purple;
 }
 .flip-card {
   width: 100%;
@@ -42,7 +47,7 @@
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
+  background-image: url("https://s3.envato.com/files/252189512/preview.jpg");
   color: black;
 }
 
@@ -51,4 +56,13 @@
   background-color: #300e44;
   color: white;
   transform: rotateY(180deg);
+}
+.title {
+  color: rgb(206, 69, 140);
+  font-size: 26px;
+  text-align: center;
+}
+.title-span {
+  font-family: cursive bold;
+  color: #300e44;
 }

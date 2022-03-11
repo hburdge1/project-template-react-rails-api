@@ -3,42 +3,63 @@ import ReactMarkdown from "react-markdown";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Button } from "../styles";
-import NewIcebreaker from "./NewIcebreaker"
+import NewIcebreaker from "./NewIcebreaker";
+import MoreButton from "../components/MoreButton.js";
+import { FlipCard } from "../components/FlipCard.js";
 
 function IcebreakerList() {
-  const [icebreakers, setIcebreakers] = useState([]);
+  const initialPage = 0;
+  const [seeIceBreakers, setIceBreakers] = useState([]);
+  const [currentPage, setPage] = useState(initialPage);
 
+  const handleNextPage = () => {
+    setPage(currentPage + 1);
+  };
+
+  // get all icebreakers
   useEffect(() => {
-    fetch("/icebreakers/")
-      .then((r) => r.json())
-      .then(setIcebreakers);
+    fetch("/icebreakers")
+      .then((res) => res.json())
+      .then((data) => setIceBreakers(data));
   }, []);
 
+  //update icebreakers
+  const updateIcebreaker = (id, flames) => {
+    //PATCH
+    let flames_a = flames + 1;
+    fetch(`/icebreakers/${id}`, {
+      method: "POST",
+      body: JSON.stringify({ flames: flames_a }),
+    }).then(() => {
+      setIceBreakers(
+        seeIceBreakers.map((ice) => {
+          if (ice.id === id) {
+            ice.flames = flames;
+          }
+          return ice;
+        })
+      );
+    });
+  };
+  const intros = seeIceBreakers.slice(currentPage * 6, (currentPage + 1) * 6);
+
   return (
-    <Wrapper>
-      {icebreakers.length > 0 ? (
-        icebreakers.map((icebreaker) => (
-          <NewIcebreaker key={icebreaker.id}>
-            <Box>
-             
-              <p>
-                <em>{icebreaker.content}</em>
-                &nbsp;·&nbsp;
-                <cite>By {icebreaker.user.username}</cite>
-              </p>
-              <ReactMarkdown></ReactMarkdown>
-            </Box>
-          </NewIcebreaker>
-        ))
-      ) : (
-        <>
-          <h2>No icebreakers Found</h2>
-          <Button as={Link} to="/new">
-            Generate an icebreaker!
-          </Button>
-        </>
-      )}
-    </Wrapper>
+    <div className="card-container">
+      {Array.from(intros).map((ice) => (
+        <div className="card-item-container">
+          <FlipCard
+            content={ice.content}
+            tags={ice.tags}
+            flames={ice.flames}
+            key={ice.id}
+            updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
+          />
+        </div>
+      ))}
+      <div className="">
+        <MoreButton nextPage={handleNextPage} />
+      </div>
+    </div>
   );
 }
 

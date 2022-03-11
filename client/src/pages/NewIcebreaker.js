@@ -8,9 +8,10 @@ import "../components/FlipCard.css";
 function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
   const [category, setCategory] = useState("");
   const [content, setContent] = useState("");
+  const [tags, setTags] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [response, setResponse] = useState('')
+  const [response, setResponse] = useState("");
   const history = useHistory();
   const flames = 0;
     function addIceBreaker(i) {
@@ -26,8 +27,8 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
         "Content-category": "application/json",
       },
       body: JSON.stringify({
-        content: {content},
-        category: {category},
+        content: { content },
+        category: { category },
         flames: 0,
         user: user,
       }),
@@ -93,12 +94,12 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
             </FormField>
           </form>
         </div>
-        <div className="">
-          <h1>{content}</h1>
-          <h3>{category}</h3>
-          {/* <ReactMarkdown>{instructions}</ReactMarkdown> */}
-        </div>
       </WrapperChild>
+      <div className="">
+        <h1>{content}</h1>
+        <h3>{category}</h3>
+        {/* <ReactMarkdown>{instructions}</ReactMarkdown> */}
+      </div>
     </Wrapper>
   );
 }

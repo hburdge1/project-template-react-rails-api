@@ -13,7 +13,7 @@ function FlipCard({
   seeIceBreakers, 
   setIceBreakers,
   user,
-  tags
+  tags,
 }) {
   const [showResponse, setShowResponse] = useState(false)
   const onClick = () => setShowResponse(!showResponse)
@@ -26,12 +26,12 @@ function FlipCard({
     <div className="flip-card">
       <div className="flip-card-inner">
         <div className="flip-card-front">
-          <p>{category}</p>
+          <h2>Flip a card to see the intro</h2>
+          <h3>Activity or Question?</h3>
         </div>
         <div className="flip-card-back">
           <h2>Type: {tags}</h2>
-          <p>Description: {content}</p>
-          <p>{tags}</p>
+          <p>{content}</p>
           <p>🔥 : {flames}</p>
           <button className="primary" onClick={updateIcebreaker}>
             Add flame
