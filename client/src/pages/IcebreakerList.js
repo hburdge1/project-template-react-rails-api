@@ -27,8 +27,8 @@ function IcebreakerList() {
   const updateIcebreaker = (id, flames) => {
     //PATCH
     let flames_a = flames + 1;
-    fetch(`/icebreakers/${id}`, {
-      method: "POST",
+    fetch(`/icebreakers/${id}/update`, {
+      method: "PATCH",
       body: JSON.stringify({ flames: flames_a }),
     }).then(() => {
       setIceBreakers(
@@ -51,7 +51,8 @@ function IcebreakerList() {
             content={ice.content}
             tags={ice.tags}
             flames={ice.flames}
-            key={ice.id}
+            id={ice.id}
+            icebreaker={ice}
             updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
           />
         </div>

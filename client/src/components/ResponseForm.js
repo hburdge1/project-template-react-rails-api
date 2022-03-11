@@ -3,31 +3,45 @@ import { Button, Error, Input, FormField, Label, onAuth } from "../styles";
 
 
 
-function ResponseForm({user, icebreaker, history, addIcebreaker}){
+function ResponseForm({user, icebreaker, responses, patchIcebreaker, addIcebreaker}){
+    const [allResponse, setAllResponse] = useState([responses])
     const [response, setResponse] = useState("")
-    const [errors, setErrors] = useState([]);
+
   function handleSubmit(e) {
     e.preventDefault();
+    setResponse(e.target.value)
     // setIsLoading(true);
-    fetch("/responses", {
+    fetch(`/responses/`, {
       method: "POST",
-      headers: {
+        headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        response
+        "response": response,
+        "icebreaker_id": 
       }),
+            
     }).then((r) => {
     //   setIsLoading(false);
       if (r.ok) {
-        history.push("/");
-        addIcebreaker(r);
+        patchIcebreakers(r);
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        
       }
     });
   }
+    function patchIcebreakers(ice){
+        let newIce = this.state.icebreakers.filter((f) => f.id !== ice.id)
+        newIce.push(ice)
+        this.setState({
+         newIce
+    })
+    }
   return(
+      <>
+      <ul>
+      {icebreaker.responses.map((r) => <li>{r.response} --from ({r.response.username})</li>)}
+      </ul>
       <form onSubmit={handleSubmit}>
            <FormField>
             <Label>Description:</Label>
@@ -46,6 +60,7 @@ function ResponseForm({user, icebreaker, history, addIcebreaker}){
             </Button>
           </FormField>
       </form>
+    </>
   )}
 
 export default ResponseForm

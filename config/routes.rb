@@ -6,9 +6,12 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
     post "/new", to: "icebreakers#create"
-    post "/icebreakers", to: "icebreakers#show"
+    get "/icebreakers", to: "icebreakers#index"
     post "/responses", to: "responses#create"
-    resources :responses
+    get '/icebreakers/:id', to: "icebreaker#show"
+    put '/icebreakers/:id/update', to: "icebreakers#update"
+    patch '/responses/:id/update', to: "response#update"
+    root 'icebreakers/'
     resources :icebreakers
     resources :work_groups
     resources :users

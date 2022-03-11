@@ -38,12 +38,10 @@ function App() {
         <div>
           <NavBar seeIceBreakers={seeIceBreakers} setIceBreakers={setIceBreakers} user={user} setUser={setUser} />
           <main>
-            <Popup  trigger={<button> Trigger</button>} position="right center">
-                did it pop?
-            </Popup>
+
             <Switch>
               <Route exact path="/">
-                <Home user={user} />
+                <Home user={user} seeIceBreakers={seeIceBreakers} addIcebreaker={addIceBreaker} />
               </Route>
               <Route path="/me">
                 <Home user={user} />

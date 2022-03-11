@@ -3,8 +3,14 @@ class IcebreakersController < ApplicationController
     render json: Icebreaker.all
   end
 
+  def update
+          if @icebreaker.update(icebreaker_params)
+            render json: @icebreaker
+          end
+   end
+
   def show
-    render json: Icebreaker.find_by(params[:icebreaker_id]), include: :response
+    render json: Icebreaker.find_by(params[:icebreaker_id]), include: :responses
   end
 
   def create
@@ -15,6 +21,6 @@ class IcebreakersController < ApplicationController
   private
 
   def icebreaker_params
-    params.permit(:content)
+    params.permit(:content, :flames, :favorite, :responses)
   end
 end

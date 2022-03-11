@@ -4,6 +4,8 @@ default=User.create!(id: default, username: 'default', password: 'default')
 b=User.create!(username: 'bananabb', password: "acffff")
 
 Icebreaker.create!(content: "What fictional family would you most like to join?", flames: 0,tags: "media, pop culture, television", favorite: false, category: "question")
+Response.create!(response: "The simpsons!!", user_id: User.first.id, icebreaker_id: Icebreaker.first.id)
+Response.create!(response: "The Griffins!", user_id: User.second.id, icebreaker_id: Icebreaker.first.id)
 Icebreaker.create!(content: "Do you love working from home or would you rather be in the office? Is there a balance of both that you like best?", flames: 0,tags: "remote, virtual, WFH", favorite: false, category: "question")
 Icebreaker.create!(content: "What’s your number one tip for combating distractions when working from home?", flames: 0,tags: "remote, virtual, WFH, motivation", favorite: false, category: "question")
 Icebreaker.create!(content: "What’s the last great TV show or movie you watched?", flames: 0,tags: "remote, virtual, television, pop culture", favorite: false, category: "question")

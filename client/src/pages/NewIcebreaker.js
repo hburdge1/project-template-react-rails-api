@@ -13,10 +13,6 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
   const [isLoading, setIsLoading] = useState(false);
   const [response, setResponse] = useState("");
   const history = useHistory();
-  const flames = 0;
-    function addIceBreaker(i) {
-    setIceBreakers([...seeIceBreakers, i]);
-  };
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,12 +31,10 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        history.push("/");
-        addIceBreaker(r);
-      } else {
-        r.json().then((err) => setErrors(err.errors));
+        history.push("/")
+        setIceBreakers([...seeIceBreakers, r])
       }
-    });
+    })
   }
 
   return (

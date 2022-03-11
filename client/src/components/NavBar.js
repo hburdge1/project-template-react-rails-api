@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
@@ -11,7 +11,16 @@ function NavBar({ user, setUser, seeIceBreakers, setIceBreakers }) {
       }
     });
   }
-
+  function handleClick(){
+    setIceBreakers(Array.from(seeIceBreakers).filter((icebreaker) =>
+      icebreaker.favorite == true
+    ))
+  }
+ useEffect(() => {
+    fetch("/icebreakers")
+      .then((res) => res.json())
+      .then((data) => setIceBreakers(data));
+  }, []);
   return (
     <Wrapper>
       <Logo>
@@ -22,7 +31,7 @@ function NavBar({ user, setUser, seeIceBreakers, setIceBreakers }) {
           New Icebreaker
         </Button>
         {/* <Link to="/new">New Icebreaker</Link> */}
-        <Button as={Link} to="/icebreakers">
+        <Button onClick={handleClick} >
           Show my icebreakers
         </Button>
         <Button variant="outline" onClick={handleLogoutClick}>
