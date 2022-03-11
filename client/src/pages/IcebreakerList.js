@@ -16,6 +16,18 @@ function IcebreakerList() {
     setPage(currentPage + 1);
   };
 
+  const removeIntro = (id) => {
+    fetch(`icebreakers/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    });
+    setIceBreakers(
+      seeIceBreakers.filter((i) => {
+        return i.id !== id;
+      })
+    );
+  };
+
   // get all icebreakers
   useEffect(() => {
     fetch("/icebreakers")
@@ -52,6 +64,7 @@ function IcebreakerList() {
             tags={ice.tags}
             flames={ice.flames}
             key={ice.id}
+            removeIntro={removeIntro}
             updateIcebreaker={() => updateIcebreaker(ice.id, ice.flames + 1)}
           />
         </div>

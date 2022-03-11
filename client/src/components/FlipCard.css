@@ -46,9 +46,10 @@
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-image: url("https://s3.envato.com/files/252189512/preview.jpg");
-  color: black;
-  opacity: 0.75;
+  /* background-image: url("https://s3.envato.com/files/252189512/preview.jpg"); */
+  color: rgb(145, 133, 133);
+  background-color: #300e44;
+  /* opacity: 0.75; */
 }
 
 /* Style the back side */

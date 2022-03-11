@@ -7,8 +7,8 @@ function FlipCard({
   flames,
   updateIcebreaker,
   icebreaker,
-  seeIceBreakers, 
-  setIceBreakers,
+  seeIceBreakers,
+  removeIntro,
   user,
   tags,
 }) {
@@ -35,6 +35,9 @@ function FlipCard({
           </button>
           <button className="primary" onClick={onClick}>
             Respond
+          </button>
+          <button className="primary" onClick={removeIntro}>
+            Delete
           </button>
           {showResponse ? (
             <ResponseForm icebreaker={icebreaker} user={user} />
