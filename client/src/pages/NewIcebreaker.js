@@ -36,10 +36,10 @@ function NewIcebreaker({ user, seeIceBreakers, setIceBreakers }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        history.push("/");
-        addIceBreaker(r);
-      } else {
-        r.json().then((err) => setErrors(err.errors));
+        history.push("/")
+           fetch("/icebreakers")
+      .then((res) => res.json())
+      .then((data) => setIceBreakers(data));
       }
     });
   }

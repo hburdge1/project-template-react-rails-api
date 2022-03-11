@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./FlipCard.css";
 import ResponseForm from "./ResponseForm";
+import Popup from 'reactjs-popup'
+
 function FlipCard({
   content,
   category,
@@ -33,15 +35,21 @@ function FlipCard({
           <button className="primary" onClick={updateIcebreaker}>
             Add flame
           </button>
-          <button className="primary" onClick={onClick}>
-            Respond
-          </button>
           <button className="primary" onClick={removeIntro}>
             Delete
           </button>
-          {showResponse ? (
+          <Popup
+  trigger={open => (
+    <button className="button">Respond</button>
+  )}
+  position="right center"
+  closeOnDocumentClick
+>
             <ResponseForm icebreaker={icebreaker} user={user} />
-          ) : null}
+         </Popup>;
+
+          
+        
         </div>
       </div>
     </div>
